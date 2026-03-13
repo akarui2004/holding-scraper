@@ -1,0 +1,27 @@
+# Staging Environment Configuration
+
+[app]
+env = "staging"
+debug = false
+
+[database]
+host = "staging-db.example.com"
+port = 5432
+name = "app_staging"
+debug = false
+pool_min = 5
+pool_max = 20
+
+[redis]
+host = "staging-redis.example.com"
+db = 1
+key_prefix = "staging:"
+ttl = 1800
+
+[logger]
+level = "info"
+format = "json"
+
+[security]
+jwt_expires_in = "12h"
+rate_limit_max_requests = 200

@@ -1,0 +1,49 @@
+{
+  "name": "holding-scraper",
+  "version": "1.0.0",
+  "description": "Holding Scraper: Tool for scraping and extracting property holding data from websites.",
+  "main": "dist/index.js",
+  "author": "Minh Doan",
+  "license": "MIT",
+  "engines": {
+    "node": ">=24.13.1"
+  },
+  "keywords": [
+    "nodejs",
+    "typescript",
+    "express",
+    "mikroorm",
+    "postgresql",
+    "redis",
+    "oop"
+  ],
+  "dependencies": {
+    "@mikro-orm/core": "^7.0.1",
+    "@mikro-orm/migrations": "^7.0.1",
+    "@mikro-orm/postgresql": "^7.0.1",
+    "dotenv": "^17.3.1",
+    "express": "^5.2.1",
+    "express-rate-limit": "^8.3.1",
+    "helmet": "^8.1.0",
+    "ioredis": "^5.10.0",
+    "pino": "^10.3.1",
+    "pino-pretty": "^13.1.3",
+    "reflect-metadata": "^0.2.2",
+    "smol-toml": "^1.6.0",
+    "uuid": "^13.0.0",
+    "zod": "^4.3.6"
+  },
+  "devDependencies": {
+    "@types/express": "^5.0.6",
+    "@types/node": "^25.5.0",
+    "@types/uuid": "^11.0.0",
+    "@typescript-eslint/eslint-plugin": "^8.57.0",
+    "@typescript-eslint/parser": "^8.57.0",
+    "eslint": "^10.0.3",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-prettier": "^5.5.5",
+    "prettier": "^3.8.1",
+    "tsx": "^4.21.0",
+    "typescript": "^5.9.3"
+  }
+}

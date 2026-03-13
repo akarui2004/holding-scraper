@@ -1,0 +1,66 @@
+{
+  "compilerOptions": {
+    "target": "ES2022",
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
+    "lib": ["ES2022"],
+
+    "outDir": "./dist",
+    "rootDir": "./src",
+    "baseUrl": "./src",
+
+    "paths": {
+      "@config": ["config/index"],
+      "@config/*": ["config/*"],
+      "@helper": ["helpers/index"],
+      "@helper/*": ["helpers/*"],
+      "@controllers": ["controllers/index"],
+      "@controllers/*": ["controllers/*"],
+      "@services": ["services/index"],
+      "@services/*": ["services/*"],
+      "@repositories": ["repositories/index"],
+      "@repositories/*": ["repositories/*"],
+      "@entities": ["entities/index"],
+      "@entities/*": ["entities/*"],
+      "@middlewares": ["middlewares/index"],
+      "@middlewares/*": ["middlewares/*"],
+      "@routes": ["routes/index"],
+      "@routes/*": ["routes/*"],
+      "@types": ["types/index"],
+      "@types/*": ["types/*"],
+      "@utils": ["utils/index"],
+      "@utils/*": ["utils/*"],
+      "@loaders": ["loaders/index"],
+      "@loaders/*": ["loaders/*"]
+    },
+
+    "strict": true,
+    "strictNullChecks": true,
+    "strictFunctionTypes": true,
+    "strictBindCallApply": true,
+    "strictPropertyInitialization": true,
+    "noImplicitAny": true,
+    "noImplicitReturns": true,
+    "noImplicitThis": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noFallthroughCasesInSwitch": true,
+    "noUncheckedIndexedAccess": true,
+    "forceConsistentCasingInFileNames": true,
+
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "resolveJsonModule": true,
+    "declaration": true,
+    "declarationMap": true,
+    "sourceMap": true,
+
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+
+    "skipLibCheck": true,
+    "incremental": true
+  },
+  "include": ["src/**/*"],
+  "exclude": ["node_modules", "dist", "tests"]
+}

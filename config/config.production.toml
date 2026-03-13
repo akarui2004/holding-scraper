@@ -1,0 +1,30 @@
+# Production Environment Configuration
+
+[app]
+env = "production"
+debug = false
+
+[database]
+host = "prod-db.example.com"
+port = 5432
+name = "app_production"
+debug = false
+pool_min = 10
+pool_max = 50
+
+[redis]
+host = "prod-redis.example.com"
+db = 2
+key_prefix = "prod:"
+ttl = 7200
+
+[logger]
+level = "warn"
+format = "json"
+max_size = "50m"
+max_files = 30
+
+[security]
+jwt_expires_in = "8h"
+rate_limit_max_requests = 100
+rate_limit_window_ms = 600000

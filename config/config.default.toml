@@ -1,0 +1,41 @@
+# Default configuration
+# This file contains default values that can be overridden by user configuration files
+
+[app]
+name = "Holding Scraper"
+version = "1.0.0"
+env = "development"
+port = 3000
+host = "0.0.0.0"
+
+[database]
+host = "localhost"
+port = 5432
+name = "app_db"
+user = "postgres"
+password = "postgres"
+pool_min = 2
+pool_max = 10
+debug = false
+
+[redis]
+host = "localhost"
+port = 6379
+password = ""
+db = 0
+key_prefix = "app:"
+ttl = 3600
+
+[logger]
+level = "info"
+format = "pretty"
+output_dir = "logs"
+max_size = "10m"
+max_files = 5
+
+[security]
+jwt_secret = "your_jwt_secret_key_not_for_production"
+jwt_expires_in = "24h"
+bcrypt_rounds = 12
+rate_limit_window_ms = 900000
+rate_limit_max_requests = 100

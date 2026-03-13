@@ -1,0 +1,22 @@
+# Development Environment Configuration
+
+[app]
+env = "development"
+debug = true
+
+[database]
+host = "localhost"
+port = 5432
+name = "app_dev"
+debug = true
+
+[redis]
+db = 0
+key_prefix = "dev:"
+
+[logger]
+level = "debug"
+format = "pretty"
+
+[security]
+jwt_secret = "dev-secret-key-not-for-production"
