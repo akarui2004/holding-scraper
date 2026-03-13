@@ -9,7 +9,7 @@ build/
 *.tsbuildinfo
 
 # Configuration files
-config/config.*.local.toml
+config/*.local.toml
 
 # Environment files
 .env
