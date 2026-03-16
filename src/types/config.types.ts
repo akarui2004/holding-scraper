@@ -16,3 +16,12 @@ export interface IDbConfig {
   pool_max: number;
   debug: boolean;
 }
+
+export interface IRedisConfig {
+  host: string;
+  port: number;
+  password: string;
+  db: number;
+  key_prefix: string;
+  ttl: number;
+}
