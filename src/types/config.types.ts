@@ -35,3 +35,14 @@ export interface IRedisConfig {
   key_prefix: string;
   ttl: number;
 }
+
+export type ILoggerFormatType = 'pretty' | 'json';
+
+export interface ILoggerConfig {
+  level: string;
+  format: ILoggerFormatType;
+  output_dir: string;
+  rotate: string;
+  max_size: string;
+  max_files: number;
+}
