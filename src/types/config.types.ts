@@ -26,3 +26,12 @@ export interface IAppConfig {
   port: number;
   host: string;
 }
+
+export interface IRedisConfig {
+  host: string;
+  port: number;
+  password: string;
+  db: number;
+  key_prefix: string;
+  ttl: number;
+}
