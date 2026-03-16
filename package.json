@@ -21,9 +21,11 @@
     "script": "tsx -r tsconfig-paths/register"
   },
   "dependencies": {
+    "@fastify/deepmerge": "^3.2.1",
     "@mikro-orm/core": "^7.0.1",
     "@mikro-orm/migrations": "^7.0.1",
     "@mikro-orm/postgresql": "^7.0.1",
+    "dot-prop": "^10.1.0",
     "dotenv": "^17.3.1",
     "express": "^5.2.1",
     "express-rate-limit": "^8.3.1",

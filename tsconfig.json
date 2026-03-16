@@ -11,7 +11,7 @@
     "baseUrl": "./src",
 
     "paths": {
-      // "@config": ["config/index"],
+      "@config": ["config/index"],
       "@config/*": ["config/*"],
       // "@helper": ["helpers/index"],
       // "@helper/*": ["helpers/*"],
@@ -27,10 +27,10 @@
       // "@middlewares/*": ["middlewares/*"],
       // "@routes": ["routes/index"],
       // "@routes/*": ["routes/*"],
-      // "@types": ["types/index"],
-      // "@types/*": ["types/*"],
-      // "@utils": ["utils/index"],
-      // "@utils/*": ["utils/*"],
+      "@types": ["types/index"],
+      "@types/*": ["types/*"],
+      "@utils": ["utils/index"],
+      "@utils/*": ["utils/*"],
       // "@loaders": ["loaders/index"],
       // "@loaders/*": ["loaders/*"]
     },
