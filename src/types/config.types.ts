@@ -1,3 +1,5 @@
+import { IEnvironment } from './common.types';
+
 export type IConfigValue = string | number | boolean | null | IConfigArray | IConfigObject;
 
 export type IConfigArray = IConfigValue[];
@@ -15,6 +17,14 @@ export interface IDbConfig {
   pool_min: number;
   pool_max: number;
   debug: boolean;
+}
+
+export interface IAppConfig {
+  name: string;
+  version: string;
+  env: IEnvironment;
+  port: number;
+  host: string;
 }
 
 export interface IRedisConfig {
