@@ -1,1 +1,1 @@
-export type IEnvironment = 'development' | 'production' | 'test';
+export type IEnvironment = 'development' | 'production' | 'test' | 'staging';
