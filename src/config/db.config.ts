@@ -1,5 +1,17 @@
 import { IDbConfig } from '@types';
-import { getConfig } from '@config';
+import z from 'zod';
+import { getConfig } from './config.loader';
+
+export const DbConfigSchema = z.object({
+  host: z.string().default('localhost'),
+  port: z.coerce.number().default(5432),
+  username: z.string().default('postgres'),
+  password: z.string().default('password'),
+  name: z.string().default('app_db'),
+  pool_min: z.coerce.number().default(0),
+  pool_max: z.coerce.number().default(10),
+  debug: z.boolean().default(false),
+});
 
 export class DbConfig implements IDbConfig {
   public readonly host: string;
@@ -13,15 +25,16 @@ export class DbConfig implements IDbConfig {
 
   /** Constructor to initialize database configuration from the loaded config */
   public constructor() {
-    const dbConfig = getConfig('db') as Record<string, string | number | boolean>;
-    this.host = (dbConfig.host as string) || 'localhost';
-    this.port = (dbConfig.port as number) || 5432;
-    this.username = (dbConfig.username as string) || 'postgres';
-    this.password = (dbConfig.password as string) || 'password';
-    this.name = (dbConfig.name as string) || 'app_db';
-    this.pool_min = (dbConfig.pool_min as number) || 0;
-    this.pool_max = (dbConfig.pool_max as number) || 10;
-    this.debug = (dbConfig.debug as boolean) || false;
+    const dbConfig = getConfig('db') ?? {};
+    const parsedDbConfig = DbConfigSchema.parse(dbConfig);
+    this.host = parsedDbConfig.host;
+    this.port = parsedDbConfig.port;
+    this.username = parsedDbConfig.username;
+    this.password = parsedDbConfig.password;
+    this.name = parsedDbConfig.name;
+    this.pool_min = parsedDbConfig.pool_min;
+    this.pool_max = parsedDbConfig.pool_max;
+    this.debug = parsedDbConfig.debug;
   }
 
   /**

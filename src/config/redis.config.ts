@@ -1,5 +1,15 @@
-import { getConfig } from '@config';
+import { getConfig } from './config.loader';
+import z from 'zod';
 import { IRedisConfig } from '@types';
+
+export const RedisConfigSchema = z.object({
+  host: z.string().default('localhost'),
+  port: z.coerce.number().default(6379),
+  password: z.string().default(''),
+  db: z.coerce.number().default(0),
+  key_prefix: z.string().default('app:'),
+  ttl: z.coerce.number().default(3600),
+});
 
 export class RedisConfig implements IRedisConfig {
   public readonly host: string;
@@ -10,13 +20,14 @@ export class RedisConfig implements IRedisConfig {
   public readonly ttl: number;
 
   public constructor() {
-    const redisConfig = getConfig('redis') as Record<string, string | number>;
-    this.host = (redisConfig.host as string) || 'localhost';
-    this.port = (redisConfig.port as number) || 6379;
-    this.password = (redisConfig.password as string) || '';
-    this.db = (redisConfig.db as number) || 0;
-    this.key_prefix = (redisConfig.key_prefix as string) || 'app:';
-    this.ttl = (redisConfig.ttl as number) || 3600; // Default TTL of 1 hour
+    const redisConfig = getConfig('redis') ?? {};
+    const parsedRedisConfig = RedisConfigSchema.parse(redisConfig);
+    this.host = parsedRedisConfig.host;
+    this.port = parsedRedisConfig.port;
+    this.password = parsedRedisConfig.password;
+    this.db = parsedRedisConfig.db;
+    this.key_prefix = parsedRedisConfig.key_prefix;
+    this.ttl = parsedRedisConfig.ttl;
   }
 
   public getConnectionOptions(): Record<string, string | number> {
