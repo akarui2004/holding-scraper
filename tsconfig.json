@@ -31,8 +31,8 @@
       "@types/*": ["types/*"],
       "@utils": ["utils/index"],
       "@utils/*": ["utils/*"],
-      // "@loaders": ["loaders/index"],
-      // "@loaders/*": ["loaders/*"]
+      "@loaders": ["loaders/index"],
+      "@loaders/*": ["loaders/*"]
     },
 
     "strict": true,
