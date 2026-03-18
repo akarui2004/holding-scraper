@@ -1,5 +1,14 @@
-import { getConfig } from '@config';
 import { IAppConfig, IEnvironment } from '@types';
+import { z } from 'zod';
+import { getConfig } from './config.loader';
+
+export const AppConfigSchema = z.object({
+  name: z.string().default('My App'),
+  version: z.string().default('1.0.0'),
+  env: z.enum(['development', 'staging', 'production', 'test']).default('development'),
+  port: z.coerce.number().default(3000),
+  host: z.string().default('localhost'),
+});
 
 export class AppConfig implements IAppConfig {
   public readonly name: string;
@@ -9,12 +18,13 @@ export class AppConfig implements IAppConfig {
   public readonly host: string;
 
   public constructor() {
-    const appConfig = getConfig('app') as Record<string, string | number>;
-    this.name = (appConfig.name as string) || 'My App';
-    this.version = (appConfig.version as string) || '1.0.0';
-    this.env = (appConfig.env as IEnvironment) || 'development';
-    this.port = (appConfig.port as number) || 3000;
-    this.host = (appConfig.host as string) || 'localhost';
+    const appConfig = getConfig('app') ?? {};
+    const parsedAppConfig = AppConfigSchema.parse(appConfig);
+    this.name = parsedAppConfig.name;
+    this.version = parsedAppConfig.version;
+    this.env = parsedAppConfig.env;
+    this.port = parsedAppConfig.port;
+    this.host = parsedAppConfig.host;
   }
 
   public get isDevelopment(): boolean {

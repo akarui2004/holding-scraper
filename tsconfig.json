@@ -11,6 +11,7 @@
     "baseUrl": "./src",
 
     "paths": {
+      "@const": ["consts/index"],
       "@config": ["config/index"],
       "@config/*": ["config/*"],
       // "@helper": ["helpers/index"],

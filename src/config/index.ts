@@ -1,5 +1,5 @@
-export { AppConfig } from './app.config';
+export { AppConfig, AppConfigSchema } from './app.config';
 export { ConfigLoader, getConfig } from './config.loader';
-export { DbConfig } from './db.config';
-export { LoggerConfig } from './logger.config';
-export { RedisConfig } from './redis.config';
+export { DbConfig, DbConfigSchema } from './db.config';
+export { LoggerConfig, LoggerConfigSchema } from './logger.config';
+export { RedisConfig, RedisConfigSchema } from './redis.config';

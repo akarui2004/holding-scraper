@@ -1,4 +1,5 @@
-import { IEnvironment } from './common.types';
+import { AppConfigSchema, DbConfigSchema, LoggerConfigSchema, RedisConfigSchema } from '@config';
+import { z } from 'zod';
 
 export type IConfigValue = string | number | boolean | null | IConfigArray | IConfigObject;
 
@@ -8,41 +9,12 @@ export interface IConfigObject {
   [key: string]: IConfigValue;
 }
 
-export interface IDbConfig {
-  host: string;
-  port: number;
-  username: string;
-  password: string;
-  name: string;
-  pool_min: number;
-  pool_max: number;
-  debug: boolean;
-}
+export type IDbConfig = z.infer<typeof DbConfigSchema>;
 
-export interface IAppConfig {
-  name: string;
-  version: string;
-  env: IEnvironment;
-  port: number;
-  host: string;
-}
+export type IAppConfig = z.infer<typeof AppConfigSchema>;
 
-export interface IRedisConfig {
-  host: string;
-  port: number;
-  password: string;
-  db: number;
-  key_prefix: string;
-  ttl: number;
-}
+export type IRedisConfig = z.infer<typeof RedisConfigSchema>;
 
-export type ILoggerFormatType = 'pretty' | 'json';
+export type ILoggerFormatType = z.infer<typeof LoggerConfigSchema>['format'];
 
-export interface ILoggerConfig {
-  level: string;
-  format: ILoggerFormatType;
-  output_dir: string;
-  rotate: string;
-  max_size: string;
-  max_files: number;
-}
+export type ILoggerConfig = z.infer<typeof LoggerConfigSchema>;
