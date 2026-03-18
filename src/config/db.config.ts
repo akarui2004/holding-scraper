@@ -1,3 +1,4 @@
+import { Migrator } from '@mikro-orm/migrations';
 import { IDbConfig } from '@types';
 import z from 'zod';
 import { getConfig } from './config.loader';
@@ -56,6 +57,15 @@ export class DbConfig implements IDbConfig {
       user: this.username,
       password: this.password,
       dbName: this.name,
+      debug: this.debug,
+      extensions: [Migrator],
+      entities: ['dist/entities/**/*.js'],
+      entitiesTs: ['src/entities/**/*.ts'],
+      migrations: {
+        path: 'dist/migrations',
+        pathTs: 'src/migrations',
+        glob: '!(*.d).{js,ts}',
+      },
       pool: {
         min: this.pool_min,
         max: this.pool_max,
