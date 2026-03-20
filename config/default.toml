@@ -17,6 +17,11 @@ password = "postgres"
 pool_min = 2
 pool_max = 10
 debug = false
+[database.discovery]
+warn_when_no_entities = false
+check_duplicate_table_name = true
+check_duplicate_field_name = true
+check_duplicate_entities = true
 
 [redis]
 host = "localhost"

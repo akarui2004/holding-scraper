@@ -223,6 +223,11 @@
   resolved "https://registry.yarnpkg.com/@mikro-orm/core/-/core-7.0.1.tgz#ac0396b92eba28d95a8aeb270ee6c89c33e1b223"
   integrity sha512-m6Q0xzZij4nR3vbEVwxRXE25L0YuDN4z2+NkqjqPKs+N1A09HfZPadBqgr0Wj9YYxEh/CBf9RGFsRCLFdlRNQA==
 
+"@mikro-orm/decorators@^7.0.3":
+  version "7.0.3"
+  resolved "https://registry.yarnpkg.com/@mikro-orm/decorators/-/decorators-7.0.3.tgz#1503863f339907728c0561dee426399062b5cfed"
+  integrity sha512-5zEPQqydZRKRVaIg/mfrwKROC+khqDQ1GCcDi9aKT4vmgGdY3TFrmnl8+v6vOayFnXCrAjECKQlmo59Y08D0BQ==
+
 "@mikro-orm/migrations@^7.0.1":
   version "7.0.1"
   resolved "https://registry.yarnpkg.com/@mikro-orm/migrations/-/migrations-7.0.1.tgz#a98ad7dcf1404911e7c454c0b967e88ee1e61861"

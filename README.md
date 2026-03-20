@@ -18,6 +18,22 @@ A robust, scalable, and well-structured NodeJS TypeScript API built with Object-
 ```
 my-app/
 ├── src/
+├── routes/
+│   ├── index.ts                ← central router / mounts all groups
+│   ├── api/
+│   │   ├── index.ts
+│   │   ├── auth.routes.ts
+│   │   ├── user.routes.ts
+│   │   └── product.routes.ts
+│   ├── admin/
+│   │   ├── index.ts
+│   │   └── dashboard.routes.ts
+│   ├── ops/
+│   │   ├── index.ts
+│   │   └── monitoring.routes.ts
+│   └── web/                    (optional)
+│       └── index.ts
+│   │
 │   ├── config/                    # Configuration management
 │   │   ├── index.ts              # Config exports
 │   │   ├── app.config.ts         # Application configuration class
@@ -57,9 +73,6 @@ my-app/
 │   │   ├── index.ts              # Repository exports
 │   │   └── base.repository.ts    # Base repository with CRUD operations
 │   │
-│   ├── routes/                   # API route definitions
-│   │   └── index.ts              # Router setup
-│   │
 │   ├── services/                 # Business logic layer
 │   │   ├── index.ts              # Service exports
 │   │   └── base.service.ts       # Base service with common operations
@@ -77,7 +90,7 @@ my-app/
 │   ├── migrations/               # Database migrations
 │   │   └── .gitkeep
 │   │
-│   └── index.ts                  # Application entry point
+│   └── server.ts                  # Application entry point
 │   │
 ├── config/                       # TOML configuration files
 │   ├── default.toml              # Default configuration

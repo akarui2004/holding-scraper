@@ -18,11 +18,23 @@
     "oop"
   ],
   "scripts": {
-    "script": "tsx -r tsconfig-paths/register"
+    "script": "tsx -r tsconfig-paths/register",
+    "dev": "tsx watch src/server.ts",
+    "dev:paths-explicit": "tsx --tsconfig tsconfig.json watch src/server.ts",
+    "build": "rimraf dist && tsc",
+    "start": "node dist/server.js",
+    "lint": "eslint src/**/*.ts",
+    "lint:fix": "eslint src/**/*.ts --fix",
+    "format": "prettier --write src/**/*.ts",
+    "typeorm": "npx mikro-orm",
+    "migration:create": "npx mikro-orm migration:create",
+    "migration:up": "npx mikro-orm migration:up",
+    "migration:down": "npx mikro-orm migration:down"
   },
   "dependencies": {
     "@fastify/deepmerge": "^3.2.1",
     "@mikro-orm/core": "^7.0.1",
+    "@mikro-orm/decorators": "^7.0.3",
     "@mikro-orm/migrations": "^7.0.1",
     "@mikro-orm/postgresql": "^7.0.1",
     "dot-prop": "^10.1.0",

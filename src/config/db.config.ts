@@ -12,6 +12,12 @@ export const DbConfigSchema = z.object({
   pool_min: z.coerce.number().default(0),
   pool_max: z.coerce.number().default(10),
   debug: z.boolean().default(false),
+  discovery: z.object({
+    warn_when_no_entities: z.boolean().default(false),
+    check_duplicate_table_name: z.boolean().default(true),
+    check_duplicate_field_name: z.boolean().default(true),
+    check_duplicate_entities: z.boolean().default(true),
+  }),
 });
 
 export class DbConfig implements IDbConfig {
@@ -23,10 +29,16 @@ export class DbConfig implements IDbConfig {
   public readonly pool_min: number;
   public readonly pool_max: number;
   public readonly debug: boolean;
+  public readonly discovery: {
+    warn_when_no_entities: boolean;
+    check_duplicate_table_name: boolean;
+    check_duplicate_field_name: boolean;
+    check_duplicate_entities: boolean;
+  };
 
   /** Constructor to initialize database configuration from the loaded config */
   public constructor() {
-    const dbConfig = getConfig('db') ?? {};
+    const dbConfig = getConfig('database') ?? {};
     const parsedDbConfig = DbConfigSchema.parse(dbConfig);
     this.host = parsedDbConfig.host;
     this.port = parsedDbConfig.port;
@@ -36,6 +48,7 @@ export class DbConfig implements IDbConfig {
     this.pool_min = parsedDbConfig.pool_min;
     this.pool_max = parsedDbConfig.pool_max;
     this.debug = parsedDbConfig.debug;
+    this.discovery = parsedDbConfig.discovery;
   }
 
   /**
@@ -59,6 +72,12 @@ export class DbConfig implements IDbConfig {
       dbName: this.name,
       debug: this.debug,
       extensions: [Migrator],
+      discovery: {
+        warnWhenNoEntities: this.discovery.warn_when_no_entities,
+        checkDuplicateTableName: this.discovery.check_duplicate_table_name,
+        checkDuplicateFieldName: this.discovery.check_duplicate_field_name,
+        checkDuplicateEntities: this.discovery.check_duplicate_entities,
+      },
       entities: ['dist/entities/**/*.js'],
       entitiesTs: ['src/entities/**/*.ts'],
       migrations: {
