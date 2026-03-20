@@ -20,7 +20,8 @@ async function bootstrap() {
   appLoader.initializeRoutes();
   appLoader.initializeErrorHandling();
 
-  // await appLoader.initializeConnections();
+  // Establish connections for database and redis
+  await appLoader.initializeConnections();
 
   await appLoader.start();
 

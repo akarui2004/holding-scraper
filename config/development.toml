@@ -9,6 +9,8 @@ host = "localhost"
 port = 5432
 name = "app_dev"
 debug = true
+[database.discovery]
+warn_when_no_entities = false
 
 [redis]
 db = 0

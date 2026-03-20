@@ -11,6 +11,8 @@ name = "app_staging"
 debug = false
 pool_min = 5
 pool_max = 20
+[database.discovery]
+warn_when_no_entities = true
 
 [redis]
 host = "staging-redis.example.com"
