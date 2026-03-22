@@ -16,8 +16,7 @@ A robust, scalable, and well-structured NodeJS TypeScript API built with Object-
 ## Project Structure
 
 ```
-my-app/
-├── src/
+src/
 ├── routes/
 │   ├── index.ts                ← central router / mounts all groups
 │   ├── api/
@@ -34,11 +33,11 @@ my-app/
 │   └── web/                    (optional)
 │       └── index.ts
 │   │
-│   ├── config/                    # Configuration management
+│   ├── config/                   # Configuration management
 │   │   ├── index.ts              # Config exports
 │   │   ├── app.config.ts         # Application configuration class
 │   │   ├── config.loader.ts      # TOML config loader (singleton)
-│   │   ├── database.config.ts    # Database configuration class
+│   │   ├── db.config.ts          # Database configuration class
 │   │   ├── logger.config.ts      # Logger configuration class
 │   │   ├── redis.config.ts       # Redis configuration class
 │   │   └── security.config.ts    # Security configuration class
@@ -84,6 +83,7 @@ my-app/
 │   │
 │   ├── utils/                    # Utility functions and classes
 │   │   ├── index.ts              # Utility exports
+│   │   ├── environment.ts        # Environment exporter
 │   │   ├── logger.ts             # Pino logger wrapper
 │   │   └── result.ts             # Result pattern for error handling
 │   │
@@ -107,8 +107,7 @@ my-app/
 ├── .prettierignore               # Prettier ignore list
 ├── .prettierrc                   # Prettier format rules
 ├── tsconfig.json                 # TypeScript compiler config
-├── package.json                  # NPM project metadata
-└── .env.example                  # Environment vars template
+└── package.json                  # NPM project metadata
 ```
 
 ## Architecture Overview

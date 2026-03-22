@@ -50,3 +50,12 @@ src/migrations/*.ts
 
 # Ignore everything in the plans folder
 plans/
+
+# Claude / Claude.dev / Anthropic computer-use / aider / cursor / windsurf style directories
+.claude/
+.claude.md
+CLAUDE.md
+.claude-rules/
+.anthropic/
+.cursor/
+.windsurf/
