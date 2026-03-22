@@ -47,3 +47,6 @@ temp/
 # MikroORM migrations (generated)
 src/migrations/*.ts
 !src/migrations/.gitkeep
+
+# Ignore everything in the plans folder
+plans/
