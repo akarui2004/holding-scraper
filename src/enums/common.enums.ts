@@ -4,3 +4,6 @@ export enum Environment {
   Production = 'production',
   Test = 'test',
 }
+
+type EnvKey = keyof typeof Environment;
+export const getEnvEnum = (key: EnvKey) => Environment[key];

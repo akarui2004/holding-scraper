@@ -1,3 +1,4 @@
+import { getEnvEnum } from '@enums';
 import { IRouteLayer } from '@types';
 import { getEnvironment, LoggerUtils } from '@utils';
 import { Express } from 'express';
@@ -32,7 +33,7 @@ class RouteInspector {
   }
 
   public logRoutes(app: Express): void {
-    if (getEnvironment() === 'production') {
+    if (getEnvironment() === getEnvEnum('Production')) {
       this.logger.info('Route logging is only enabled in development | staging environment');
       return;
     }
