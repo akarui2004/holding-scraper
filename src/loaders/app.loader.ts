@@ -1,6 +1,6 @@
 import { AppConfig, SecurityConfig } from '@config';
 import mainRouter from '@routes';
-import { LoggerUtils } from '@utils';
+import { getEnvironment, LoggerUtils } from '@utils';
 import express, { Express } from 'express';
 import rateLimit from 'express-rate-limit';
 import helmet from 'helmet';
@@ -94,7 +94,7 @@ export class AppLoader {
 
         res.status(500).json({
           success: false,
-          error: this.appConfig.isProduction ? 'Internal server error' : err.message,
+          error: 'Internal server error',
         });
       }
     );
@@ -115,7 +115,7 @@ export class AppLoader {
         this.logger.info(`Server started`, {
           host: this.appConfig.host,
           port: this.appConfig.port,
-          environment: this.appConfig.env,
+          environment: getEnvironment(),
         });
         resolve();
       });

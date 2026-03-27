@@ -1,8 +1,8 @@
 # Development Environment Configuration
 
 [app]
-env = "development"
-debug = true
+environment = "development"
+features = { routeLogging = true }
 
 [database]
 host = "localhost"

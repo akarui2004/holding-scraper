@@ -1,9 +1,6 @@
-import { AppConfigSchema } from '@config';
-import { z } from 'zod';
+export type IEnvironment = 'development' | 'staging' | 'production' | 'test';
 
-export type IEnvironment = z.infer<typeof AppConfigSchema>['env'];
-
-export interface RouteLayer {
+export interface IRouteLayer {
   route?: { path: string; methods: Record<string, boolean> };
   name?: string;
   handle?: unknown;

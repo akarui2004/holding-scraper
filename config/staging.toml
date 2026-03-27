@@ -1,7 +1,6 @@
 # Staging Environment Configuration
 
 [app]
-env = "staging"
 debug = false
 
 [database]

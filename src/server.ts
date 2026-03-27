@@ -1,4 +1,5 @@
 import { logger } from '@utils';
+import { routeInspectorHelper } from 'helper';
 import { getAppLoader } from './loaders/app.loader';
 
 async function gracefulShutdown(signal: string): Promise<void> {
@@ -24,6 +25,9 @@ async function bootstrap() {
   await appLoader.initializeConnections();
 
   await appLoader.start();
+
+  // Handle route inspector
+  routeInspectorHelper.logRoutes(appLoader.getApp());
 
   process.on('SIGTERM', () => void gracefulShutdown('SIGTERM'));
   process.on('SIGINT', () => void gracefulShutdown('SIGINT'));
