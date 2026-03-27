@@ -1,7 +1,6 @@
 # Production Environment Configuration
 
 [app]
-env = "production"
 debug = false
 
 [database]

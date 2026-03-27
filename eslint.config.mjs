@@ -62,6 +62,7 @@ export default [
       '@typescript-eslint/no-explicit-any': 'warn',
       '@typescript-eslint/no-non-null-assertion': 'warn',
       '@typescript-eslint/no-empty-object-type': 'error',
+      '@typescript-eslint/no-unsafe-call': 'off',
       'no-console': ['warn', { allow: ['warn', 'error'] }],
     },
   },
