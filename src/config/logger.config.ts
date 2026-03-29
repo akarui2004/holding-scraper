@@ -1,15 +1,6 @@
 import { ILoggerConfig, ILoggerFormatType } from '@types';
-import z from 'zod';
+import { LoggerConfigSchema } from './schemas';
 import { getConfig } from './config.loader';
-
-export const LoggerConfigSchema = z.object({
-  level: z.string().default('info'),
-  format: z.enum(['pretty', 'json']).default('pretty'),
-  output_dir: z.string().default('logs'),
-  rotate: z.string().default('daily'),
-  max_size: z.string().default('10m'),
-  max_files: z.coerce.number().default(5),
-});
 
 export class LoggerConfig implements ILoggerConfig {
   public readonly level: string;

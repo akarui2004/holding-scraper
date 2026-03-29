@@ -1,6 +1,5 @@
 import { deepmerge } from '@fastify/deepmerge';
-import { IConfigObject, IConfigValue } from '@types';
-import { getEnvironment } from '@utils';
+import { IConfigObject, IConfigValue, IEnvironment } from '@types';
 import { getProperty } from 'dot-prop';
 import fs from 'fs';
 import path from 'path';
@@ -27,7 +26,7 @@ export class ConfigLoader {
 
   /** Load and merge configuration files */
   private loadConfig(): IConfigObject {
-    const env = getEnvironment();
+    const env: IEnvironment = (process.env.NODE_ENV as IEnvironment) || 'development';
     const defaultConfig = this.loadTomlFile('default.toml');
 
     const envConfigFile = `${env}.toml`;

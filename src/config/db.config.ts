@@ -1,24 +1,8 @@
+import { DbConfigSchema } from './schemas';
 import { Migrator } from '@mikro-orm/migrations';
+import { SeedManager } from '@mikro-orm/seeder';
 import { IDbConfig } from '@types';
-import z from 'zod';
 import { getConfig } from './config.loader';
-
-export const DbConfigSchema = z.object({
-  host: z.string().default('localhost'),
-  port: z.coerce.number().default(5432),
-  username: z.string().default('postgres'),
-  password: z.string().default('password'),
-  name: z.string().default('app_db'),
-  pool_min: z.coerce.number().default(0),
-  pool_max: z.coerce.number().default(10),
-  debug: z.boolean().default(false),
-  discovery: z.object({
-    warn_when_no_entities: z.boolean().default(false),
-    check_duplicate_table_name: z.boolean().default(true),
-    check_duplicate_field_name: z.boolean().default(true),
-    check_duplicate_entities: z.boolean().default(true),
-  }),
-});
 
 export class DbConfig implements IDbConfig {
   public readonly host: string;
@@ -71,7 +55,7 @@ export class DbConfig implements IDbConfig {
       password: this.password,
       dbName: this.name,
       debug: this.debug,
-      extensions: [Migrator],
+      extensions: [Migrator, SeedManager],
       discovery: {
         warnWhenNoEntities: this.discovery.warn_when_no_entities,
         checkDuplicateTableName: this.discovery.check_duplicate_table_name,

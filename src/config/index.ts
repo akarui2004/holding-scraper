@@ -1,6 +1,6 @@
-export { AppConfig, AppConfigSchema } from './app.config';
+export { AppConfig } from './app.config';
 export { ConfigLoader, getConfig } from './config.loader';
-export { DbConfig, DbConfigSchema } from './db.config';
-export { LoggerConfig, LoggerConfigSchema } from './logger.config';
-export { RedisConfig, RedisConfigSchema } from './redis.config';
-export { SecurityConfig, SecurityConfigSchema } from './security.config';
+export { DbConfig } from './db.config';
+export { LoggerConfig } from './logger.config';
+export { RedisConfig } from './redis.config';
+export { SecurityConfig } from './security.config';

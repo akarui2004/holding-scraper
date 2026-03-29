@@ -4,7 +4,7 @@ import {
   LoggerConfigSchema,
   RedisConfigSchema,
   SecurityConfigSchema,
-} from '@config';
+} from '../config/schemas';
 import { z } from 'zod';
 
 export type IConfigValue = string | number | boolean | null | IConfigArray | IConfigObject;
