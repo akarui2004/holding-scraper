@@ -1,20 +1,11 @@
+import { RedisConfigSchema } from './schemas';
 import { getConfig } from './config.loader';
-import z from 'zod';
 import { IRedisConfig } from '@types';
-
-export const RedisConfigSchema = z.object({
-  host: z.string().default('localhost'),
-  port: z.coerce.number().default(6379),
-  password: z.string().default(''),
-  db: z.coerce.number().default(0),
-  key_prefix: z.string().default('app:'),
-  ttl: z.coerce.number().default(3600),
-});
 
 export class RedisConfig implements IRedisConfig {
   public readonly host: string;
   public readonly port: number;
-  public readonly password: string;
+  public readonly password: string | undefined;
   public readonly db: number;
   public readonly key_prefix: string;
   public readonly ttl: number;

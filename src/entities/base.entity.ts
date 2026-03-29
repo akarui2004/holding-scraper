@@ -1,13 +1,8 @@
-import { Entity, PrimaryKey, Property, SerializedPrimaryKey } from '@mikro-orm/decorators/legacy';
-import { v4 as uuidv4 } from 'uuid';
+import { PrimaryKey, Property } from '@mikro-orm/decorators/legacy';
 
-@Entity({ abstract: true })
 export abstract class BaseEntity {
-  @PrimaryKey({ type: 'integer', autoincrement: true })
-  id!: number;
-
-  @SerializedPrimaryKey({ unique: true })
-  uuid!: string;
+  @PrimaryKey({ type: 'uuid', defaultRaw: 'gen_random_uuid()' })
+  id!: string;
 
   @Property()
   createdAt: Date = new Date();
@@ -15,13 +10,9 @@ export abstract class BaseEntity {
   @Property({ onUpdate: () => new Date() })
   updatedAt: Date = new Date();
 
-  constructor() {
-    this.uuid = uuidv4();
-  }
-
   public toJSON(): Record<string, unknown> {
     return {
-      id: this.uuid,
+      id: this.id,
       createdAt: this.createdAt.toISOString(),
       updatedAt: this.updatedAt.toISOString(),
     };
