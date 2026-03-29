@@ -1,4 +1,6 @@
-export type IEnvironment = 'development' | 'staging' | 'production' | 'test';
+import { Environment } from '@enums';
+
+export type IEnvironment = (typeof Environment)[keyof typeof Environment];
 
 export interface IRouteLayer {
   route?: { path: string; methods: Record<string, boolean> };
