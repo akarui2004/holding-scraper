@@ -14,4 +14,10 @@ export class AccountEntity extends BaseEntity {
 
   @Property({ type: 'timestamptz', nullable: true })
   deletedAt!: Date | null;
+
+  @Property({ type: 'timestamptz' })
+  declare createdAt: Date;
+
+  @Property({ type: 'timestamptz', onUpdate: () => new Date() })
+  declare updatedAt: Date;
 }

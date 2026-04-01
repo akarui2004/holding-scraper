@@ -257,7 +257,7 @@
     postgres-date "2.1.0"
     postgres-interval "4.0.2"
 
-"@mikro-orm/seeder@^7.0.6":
+"@mikro-orm/seeder@7.0.6":
   version "7.0.6"
   resolved "https://registry.yarnpkg.com/@mikro-orm/seeder/-/seeder-7.0.6.tgz#33a483221a46b44f6face2adfe4ca540e1a6ea65"
   integrity sha512-TPlgGq+EU6BNsIwD8/xRvNHBZByHEgvY/sb7CRL0Z44v5K7gDbdEnRpWNGIg2dnNQUYbIBjhY1aznUBJQ7d/Xw==
