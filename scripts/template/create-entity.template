@@ -4,7 +4,7 @@ import { BaseEntity } from './base.entity';
 
 @Entity({ tableName: '%1$s' })
 // Define Unique or Index key in here
-export class UserEntity extends BaseEntity {
+export class %2$s extends BaseEntity {
   // Define other properties in here
 
   @Property({ type: DateTimeType, nullable: true })
