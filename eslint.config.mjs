@@ -6,7 +6,14 @@ import prettierConfig from 'eslint-config-prettier';
 export default [
   // Ignore patterns
   {
-    ignores: ['node_modules', 'dist', '*.js', '*.d.ts', 'src/migrations/**/*.ts'],
+    ignores: [
+      'node_modules',
+      'dist',
+      '*.js',
+      '*.d.ts',
+      'src/migrations/**/*.ts',
+      'scripts/**/*.ts',
+    ],
   },
 
   // ESLint recommended rules for all files
