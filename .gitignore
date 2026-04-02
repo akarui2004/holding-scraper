@@ -58,4 +58,3 @@ CLAUDE.md
 .anthropic/
 .cursor/
 .windsurf/
-.snapshot-*.json

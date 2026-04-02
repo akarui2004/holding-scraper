@@ -43,6 +43,7 @@ export default defineConfig({
     disableForeignKeys: true, // Disable FK checks while migrating (speed + safety)
     allOrNothing: true, // Run all migrations in one transaction
     snapshot: true, // Create snapshot after generating migration
+    snapshotName: 'migration-snapshot', // Name of the snapshot file
     generator: CustomMigrationGeneratorHelper,
   },
 
