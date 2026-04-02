@@ -1,7 +1,7 @@
 import { DateTimeType, StringType, TextType } from '@mikro-orm/core';
 import { Entity, ManyToOne, Property, Unique } from '@mikro-orm/decorators/legacy';
-import { BaseEntity } from './base.entity';
 import { AccountEntity } from './account.entity';
+import { BaseEntity } from './base.entity';
 
 @Entity({ tableName: 'users' })
 @Unique({ properties: ['email', 'account'], name: 'uniq_email_account' })

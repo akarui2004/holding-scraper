@@ -3,6 +3,7 @@ import { DateTimeType, StringType, TextType } from '@mikro-orm/core';
 import { Entity, Index, ManyToOne, Property, Unique } from '@mikro-orm/decorators/legacy';
 import { AccountEntity } from './account.entity';
 import { BaseEntity } from './base.entity';
+import { RoleEntity } from './role.entity';
 
 @Entity({ tableName: 'operators' })
 @Unique({ properties: ['accessKey', 'account'], name: 'uniq_ops_access_key_account' })
@@ -11,6 +12,9 @@ import { BaseEntity } from './base.entity';
 export class OperatorEntity extends BaseEntity {
   @ManyToOne(() => AccountEntity)
   account!: AccountEntity;
+
+  @ManyToOne(() => RoleEntity)
+  role!: RoleEntity;
 
   @Property({ type: StringType, length: 255 })
   accessKey!: string;
