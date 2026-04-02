@@ -1,13 +1,14 @@
+import { DateTimeType, UuidType } from '@mikro-orm/core';
 import { PrimaryKey, Property } from '@mikro-orm/decorators/legacy';
 
 export abstract class BaseEntity {
-  @PrimaryKey({ type: 'uuid', defaultRaw: 'gen_random_uuid()' })
+  @PrimaryKey({ type: UuidType, defaultRaw: 'gen_random_uuid()' })
   id!: string;
 
-  @Property({ type: 'timestamptz' })
+  @Property({ type: DateTimeType })
   createdAt!: Date;
 
-  @Property({ type: 'timestamptz', onUpdate: () => new Date() })
+  @Property({ type: DateTimeType, onUpdate: () => new Date() })
   updatedAt!: Date;
 
   public toJSON(): Record<string, unknown> {
