@@ -1,0 +1,18 @@
+import { DateTimeType } from '@mikro-orm/core';
+import { Entity, Property } from '@mikro-orm/decorators/legacy';
+import { BaseEntity } from './base.entity';
+
+@Entity({ tableName: '%1$s' })
+// Define Unique or Index key in here
+export class UserEntity extends BaseEntity {
+  // Define other properties in here
+
+  @Property({ type: DateTimeType, nullable: true })
+  deletedAt!: Date | null;
+
+  @Property({ type: DateTimeType })
+  declare createdAt: Date;
+
+  @Property({ type: DateTimeType, onUpdate: () => new Date() })
+  declare updatedAt: Date;
+}
