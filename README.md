@@ -101,6 +101,7 @@ src/
 │   │
 ├── logs/                         # Log files directory
 ├── tests/                        # Test files directory
+├── scripts/                      # Contain all necessary script to do something
 ├── .gitignore                    # Git ignore rules
 ├── .editorconfig                 # Editor style config
 ├── .eslintrc.json                # ESLint rules
