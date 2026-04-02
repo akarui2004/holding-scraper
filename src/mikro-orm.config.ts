@@ -5,6 +5,7 @@ import { PostgreSqlDriver } from '@mikro-orm/postgresql';
 import { SeedManager } from '@mikro-orm/seeder';
 import { SqlHighlighter } from '@mikro-orm/sql-highlighter';
 import { DbConfig } from './config/db.config';
+import { CustomMigrationGeneratorHelper } from './helper/custom-migration-generator.helper';
 
 const dbConfig = new DbConfig();
 
@@ -41,6 +42,8 @@ export default defineConfig({
     transactional: true, // Wrap migrations in transactions
     disableForeignKeys: true, // Disable FK checks while migrating (speed + safety)
     allOrNothing: true, // Run all migrations in one transaction
+    snapshot: false, // Don't create snapshot after generating migration
+    generator: CustomMigrationGeneratorHelper,
   },
 
   // -----------
