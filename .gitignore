@@ -45,8 +45,7 @@ temp/
 *.tmp
 
 # MikroORM migrations (generated)
-src/migrations/*.ts
-!src/migrations/.gitkeep
+src/migrations/migrations-lock.json
 
 # Ignore everything in the plans folder
 plans/
