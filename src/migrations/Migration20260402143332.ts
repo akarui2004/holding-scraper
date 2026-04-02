@@ -2,7 +2,7 @@
 
 import { Migration } from '@mikro-orm/migrations';
 
-export class Migration20260402142619 extends Migration {
+export class Migration20260402143332 extends Migration {
 
   override up(): void | Promise<void> {
     this.addSql(`CREATE TABLE "accounts" (
