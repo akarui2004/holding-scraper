@@ -1,9 +1,17 @@
 import { Status } from '@enums';
-import { DateTimeType, StringType, TextType } from '@mikro-orm/core';
-import { Entity, Index, ManyToOne, Property, Unique } from '@mikro-orm/decorators/legacy';
+import { Collection, DateTimeType, StringType, TextType } from '@mikro-orm/core';
+import {
+  Entity,
+  Index,
+  ManyToMany,
+  ManyToOne,
+  Property,
+  Unique,
+} from '@mikro-orm/decorators/legacy';
 import { AccountEntity } from './account.entity';
 import { BaseEntity } from './base.entity';
 import { RoleEntity } from './role.entity';
+import { PermissionEntity } from './permission.entity';
 
 @Entity({ tableName: 'operators' })
 @Unique({ properties: ['accessKey', 'account'], name: 'uniq_ops_access_key_account' })
@@ -48,4 +56,7 @@ export class OperatorEntity extends BaseEntity {
 
   @Property({ type: DateTimeType, onUpdate: () => new Date() })
   declare updatedAt: Date;
+
+  @ManyToMany(() => PermissionEntity)
+  permissions!: Collection<PermissionEntity>;
 }

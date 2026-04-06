@@ -3,6 +3,7 @@ import { Entity, ManyToMany, ManyToOne, Property } from '@mikro-orm/decorators/l
 import { AccountEntity } from './account.entity';
 import { BaseEntity } from './base.entity';
 import { RoleEntity } from './role.entity';
+import { OperatorEntity } from './operator.entity';
 
 @Entity({ tableName: 'permissions' })
 // Define Unique or Index key in here
@@ -30,4 +31,7 @@ export class PermissionEntity extends BaseEntity {
 
   @ManyToMany(() => RoleEntity, (role) => role.permissions, { eager: true })
   roles!: Collection<RoleEntity>;
+
+  @ManyToMany(() => OperatorEntity, (operator) => operator.permissions, { eager: true })
+  operators!: Collection<OperatorEntity>;
 }

@@ -812,6 +812,87 @@
       "nativeEnums": {}
     },
     {
+      "name": "operators_permissions",
+      "schema": "public",
+      "columns": {
+        "operators_id": {
+          "name": "operators_id",
+          "type": "uuid",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "unique": false,
+          "length": null,
+          "precision": null,
+          "scale": null,
+          "default": null,
+          "comment": null,
+          "enumItems": [],
+          "mappedType": "uuid"
+        },
+        "permissions_id": {
+          "name": "permissions_id",
+          "type": "uuid",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "unique": false,
+          "length": null,
+          "precision": null,
+          "scale": null,
+          "default": null,
+          "comment": null,
+          "enumItems": [],
+          "mappedType": "uuid"
+        }
+      },
+      "indexes": [
+        {
+          "keyName": "operators_permissions_pkey",
+          "columnNames": [
+            "operators_id",
+            "permissions_id"
+          ],
+          "composite": true,
+          "constraint": true,
+          "primary": true,
+          "unique": true
+        }
+      ],
+      "checks": [],
+      "foreignKeys": {
+        "operators_permissions_operators_id_foreign": {
+          "constraintName": "operators_permissions_operators_id_foreign",
+          "columnNames": [
+            "operators_id"
+          ],
+          "localTableName": "public.operators_permissions",
+          "referencedColumnNames": [
+            "id"
+          ],
+          "referencedTableName": "public.operators",
+          "deleteRule": "cascade",
+          "updateRule": "cascade"
+        },
+        "operators_permissions_permissions_id_foreign": {
+          "constraintName": "operators_permissions_permissions_id_foreign",
+          "columnNames": [
+            "permissions_id"
+          ],
+          "localTableName": "public.operators_permissions",
+          "referencedColumnNames": [
+            "id"
+          ],
+          "referencedTableName": "public.permissions",
+          "deleteRule": "cascade",
+          "updateRule": "cascade"
+        }
+      },
+      "nativeEnums": {}
+    },
+    {
       "name": "roles_permissions",
       "schema": "public",
       "columns": {
