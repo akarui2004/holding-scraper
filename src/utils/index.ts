@@ -1,2 +1,2 @@
 export * from './environment';
-export { LoggerUtils, logger, createContextLogger } from './logger';
+export { createContextLogger, logger, LoggerUtils } from './logger';
