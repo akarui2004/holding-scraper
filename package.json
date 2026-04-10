@@ -32,11 +32,16 @@
     "lint": "eslint src/**/*.ts",
     "lint:fix": "eslint src/**/*.ts --fix",
     "format": "prettier --write src/**/*.ts",
-    "typeorm": "npx mikro-orm",
+    "orm": "npm_config_loglevel=error npx mikro-orm",
+    "db:drop": "yarn script scripts/db-drop.ts",
+    "db:create": "yarn orm database:create",
+    "db:fresh": "yarn db:drop && yarn db:create && yarn migration:up",
     "entity:create": "yarn script scripts/create-entity.ts",
-    "migration:create": "npx mikro-orm migration:create",
-    "migration:up": "npx mikro-orm migration:up",
-    "migration:down": "npx mikro-orm migration:down"
+    "migration:create": "yarn orm migration:create",
+    "migration:up": "yarn orm migration:up",
+    "migration:down": "yarn orm migration:down",
+    "seeder:create": "yarn orm seeder:create",
+    "seeder:run": "yarn orm seeder:run"
   },
   "dependencies": {
     "@fastify/deepmerge": "^3.2.1",
