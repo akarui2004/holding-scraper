@@ -52,6 +52,7 @@
     "@mikro-orm/seeder": "7.0.6",
     "@mikro-orm/sql-highlighter": "^1.0.1",
     "commander": "^14.0.3",
+    "csv-parser": "^3.2.0",
     "dot-prop": "^10.1.0",
     "dotenv": "^17.3.1",
     "express": "^5.2.1",
