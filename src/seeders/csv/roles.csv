@@ -1,0 +1,11 @@
+id,account_id,name,code,description
+019d9c41-a14e-7e64-a1e0-59e1f11d3ecb,019d77dc-cbc3-7bad-b7f9-dd4370a66a0b,Super Admin,super-admin,Super Administrator
+019d9c47-42db-750f-9ade-d0a0a7b791ea,019d77dc-cbc3-7bad-b7f9-dd4370a66a0b,Admin,admin,Administrator
+019d9c47-b0a0-7230-9991-f1241b031e03,019d77dc-cbc3-7bad-b7f9-dd4370a66a0b,Manager,manager,Manager
+019d9c48-2d86-7a66-9fb6-871141b85635,019d77dc-cbc3-7bad-b7f9-dd4370a66a0b,Saler,saler,Saler
+019d9c49-3403-72df-9756-6fa9fe39a235,019d77dc-cbc3-7bad-b7f9-dd4370a66a0b,Guest,guest,Guest
+019d9c49-ccb6-7aac-a6ca-4fec7aa7aeea,019d77dd-0d0c-7ba4-97c6-c6309925ad59,Super Admin,super-admin,Super Administrator
+019d9c4a-1131-7a55-8db9-3ee4e4939905,019d77dd-0d0c-7ba4-97c6-c6309925ad59,Admin,admin,Administrator
+019d9c4a-2ae1-70d5-a339-0a0696d2291d,019d77dd-0d0c-7ba4-97c6-c6309925ad59,Editor,editor,Editor
+019d9c4a-584b-7626-90ca-52cf7ac4398a,019d77dd-0d0c-7ba4-97c6-c6309925ad59,Viewer,viewer,Viewer
+019d9c4a-724e-7d41-97d1-9c24f21b4993,019d77dd-0d0c-7ba4-97c6-c6309925ad59,Guest,guest,Guest

@@ -2,7 +2,7 @@
 
 import { Migration } from '@mikro-orm/migrations';
 
-export class Migration20260402164954 extends Migration {
+export class Migration20260417165529 extends Migration {
 
   override up(): void | Promise<void> {
     this.addSql(`CREATE TABLE "accounts" (
@@ -46,9 +46,9 @@ export class Migration20260402164954 extends Migration {
                    PRIMARY KEY ("id")
                  );`);
     this.addSql(`ALTER TABLE "roles"
-                 ADD CONSTRAINT "roles_name_unique" UNIQUE ("name");`);
+                 ADD CONSTRAINT "roles_account_id_code_unique" UNIQUE ("account_id", "code");`);
     this.addSql(`ALTER TABLE "roles"
-                 ADD CONSTRAINT "roles_code_unique" UNIQUE ("code");`);
+                 ADD CONSTRAINT "roles_account_id_name_unique" UNIQUE ("account_id", "name");`);
 
     this.addSql(`CREATE TABLE "operators" (
                    "id" UUID NOT NULL DEFAULT GEN_RANDOM_UUID(),
@@ -72,6 +72,12 @@ export class Migration20260402164954 extends Migration {
                  ADD CONSTRAINT "uniq_ops_email_account" UNIQUE ("email", "account_id");`);
     this.addSql(`ALTER TABLE "operators"
                  ADD CONSTRAINT "uniq_ops_access_key_account" UNIQUE ("access_key", "account_id");`);
+
+    this.addSql(`CREATE TABLE "operators_permissions" (
+                   "operators_id" UUID NOT NULL,
+                   "permissions_id" UUID NOT NULL,
+                   PRIMARY KEY ("operators_id", "permissions_id")
+                 );`);
 
     this.addSql(`CREATE TABLE "roles_permissions" (
                    "roles_id" UUID NOT NULL,
@@ -130,6 +136,11 @@ export class Migration20260402164954 extends Migration {
     this.addSql(`ALTER TABLE "operators"
                  ADD CONSTRAINT "operators_role_id_foreign" FOREIGN KEY ("role_id") REFERENCES "roles" ("id");`);
 
+    this.addSql(`ALTER TABLE "operators_permissions"
+                 ADD CONSTRAINT "operators_permissions_operators_id_foreign" FOREIGN KEY ("operators_id") REFERENCES "operators" ("id") ON UPDATE CASCADE ON DELETE CASCADE;`);
+    this.addSql(`ALTER TABLE "operators_permissions"
+                 ADD CONSTRAINT "operators_permissions_permissions_id_foreign" FOREIGN KEY ("permissions_id") REFERENCES "permissions" ("id") ON UPDATE CASCADE ON DELETE CASCADE;`);
+
     this.addSql(`ALTER TABLE "roles_permissions"
                  ADD CONSTRAINT "roles_permissions_roles_id_foreign" FOREIGN KEY ("roles_id") REFERENCES "roles" ("id") ON UPDATE CASCADE ON DELETE CASCADE;`);
     this.addSql(`ALTER TABLE "roles_permissions"
@@ -155,12 +166,16 @@ export class Migration20260402164954 extends Migration {
                  DROP CONSTRAINT "users_account_id_foreign";`);
     this.addSql(`ALTER TABLE "credentials"
                  DROP CONSTRAINT "credentials_account_id_foreign";`);
+    this.addSql(`ALTER TABLE "operators_permissions"
+                 DROP CONSTRAINT "operators_permissions_permissions_id_foreign";`);
     this.addSql(`ALTER TABLE "roles_permissions"
                  DROP CONSTRAINT "roles_permissions_permissions_id_foreign";`);
     this.addSql(`ALTER TABLE "operators"
                  DROP CONSTRAINT "operators_role_id_foreign";`);
     this.addSql(`ALTER TABLE "roles_permissions"
                  DROP CONSTRAINT "roles_permissions_roles_id_foreign";`);
+    this.addSql(`ALTER TABLE "operators_permissions"
+                 DROP CONSTRAINT "operators_permissions_operators_id_foreign";`);
     this.addSql(`ALTER TABLE "credentials"
                  DROP CONSTRAINT "credentials_ownerId_foreign";`);
 
@@ -168,6 +183,7 @@ export class Migration20260402164954 extends Migration {
     this.addSql(`DROP TABLE IF EXISTS "permissions" CASCADE;`);
     this.addSql(`DROP TABLE IF EXISTS "roles" CASCADE;`);
     this.addSql(`DROP TABLE IF EXISTS "operators" CASCADE;`);
+    this.addSql(`DROP TABLE IF EXISTS "operators_permissions" CASCADE;`);
     this.addSql(`DROP TABLE IF EXISTS "roles_permissions" CASCADE;`);
     this.addSql(`DROP TABLE IF EXISTS "users" CASCADE;`);
     this.addSql(`DROP TABLE IF EXISTS "credentials" CASCADE;`);

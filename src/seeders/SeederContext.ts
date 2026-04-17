@@ -1,4 +1,4 @@
-import { AccountEntity } from '@entities';
+import { AccountEntity, RoleEntity } from '@entities';
 import { EntityName } from '@mikro-orm/core';
 
 export type SeederContextItem = {
@@ -8,4 +8,5 @@ export type SeederContextItem = {
 
 export const SEEDER_CONTEXTS: SeederContextItem[] = [
   { csvFile: 'accounts.csv', entity: AccountEntity },
+  { csvFile: 'roles.csv', entity: RoleEntity },
 ];

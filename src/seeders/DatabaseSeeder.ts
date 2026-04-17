@@ -27,8 +27,16 @@ export class DatabaseSeeder extends Seeder {
         continue;
       }
 
-      await em.upsertMany(entity, seederData);
-      logger.info(`[SEEDER] Seeded ${seederData.length} records into ${entityName}`);
+      try {
+        await em.upsertMany(entity, seederData);
+        // Clear the EntityManager to free up memory after each seeding operation
+        // This is especially important when seeding large datasets to prevent memory leaks
+        // Note: clearing eagerly loaded relations may cause issues if subsequent seeders depend on them
+        em.clear();
+        logger.info(`[SEEDER] Seeded ${seederData.length} records into ${entityName}`);
+      } catch (error) {
+        logger.error(`[SEEDER] Failed to seed ${entityName} from ${csvFile}:`, error);
+      }
     }
   }
 }
