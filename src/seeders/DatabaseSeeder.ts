@@ -1,39 +1,34 @@
-import { AccountEntity } from '@entities';
-import type { EntityManager, EntityName } from '@mikro-orm/core';
+import type { EntityManager } from '@mikro-orm/core';
 import { Seeder } from '@mikro-orm/seeder';
 import { logger, readCSVFile } from '@utils';
 import fs from 'fs';
-
-type SeederContextItem = {
-  file: string;
-  entity: EntityName;
-};
-
-const SEEDER_CONTEXT: SeederContextItem[] = [{ file: 'account.csv', entity: AccountEntity }];
+import path from 'path';
+import { SEEDER_CONTEXTS } from './SeederContext';
 
 export class DatabaseSeeder extends Seeder {
   async run(em: EntityManager): Promise<void> {
-    for (const { file, entity } of SEEDER_CONTEXT) {
+    for (const { csvFile, entity } of SEEDER_CONTEXTS) {
       const entityName = typeof entity === 'function' && 'name' in entity ? entity.name : null;
       if (!entityName) {
-        logger.error(`Invalid entity for seeding: ${entityName}`);
-        continue;
-      }
-      logger.info(`Seeding ${entityName} from ${file}...`);
-
-      const csvFile = `src/seeders/csv/${file}`;
-      if (!fs.existsSync(csvFile)) {
-        logger.error(`CSV file not found: ${csvFile}`);
+        logger.warn(`[SEEDER] Skipped: Invalid entity for seeding with CSV file ${csvFile}`);
         continue;
       }
 
-      const seederData = await readCSVFile(csvFile);
+      logger.info(`[SEEDER] Loading seeder for ${entityName} from ${csvFile}`);
+      const csvFilePath = path.join(__dirname, 'csv', csvFile);
+      if (!fs.existsSync(csvFilePath)) {
+        logger.warn(`[SEEDER] Skipped: CSV file(${csvFile}) not found`);
+        continue;
+      }
+
+      const seederData = await readCSVFile(csvFilePath);
       if (!seederData || seederData.length === 0) {
-        logger.error(`No data found in CSV file: ${csvFile}`);
+        logger.error(`[SEEDER] Skipped: No data found in CSV file ${csvFile}`);
         continue;
       }
+
       await em.upsertMany(entity, seederData);
-      logger.info(`Successfully seeded ${entityName}`);
+      logger.info(`[SEEDER] Seeded ${seederData.length} records into ${entityName}`);
     }
   }
 }
