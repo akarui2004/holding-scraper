@@ -5,10 +5,10 @@ export abstract class BaseEntity {
   @PrimaryKey({ type: UuidType, defaultRaw: 'gen_random_uuid()' })
   id!: string;
 
-  @Property({ type: DateTimeType })
+  @Property({ type: DateTimeType, onCreate: () => new Date() })
   createdAt!: Date;
 
-  @Property({ type: DateTimeType, onUpdate: () => new Date() })
+  @Property({ type: DateTimeType, onCreate: () => new Date(), onUpdate: () => new Date() })
   updatedAt!: Date;
 
   public toJSON(): Record<string, unknown> {

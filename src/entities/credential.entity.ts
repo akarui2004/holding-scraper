@@ -37,9 +37,9 @@ export class CredentialEntity extends BaseEntity {
   @Property({ type: DateTimeType, nullable: true })
   deletedAt!: Date | null;
 
-  @Property({ type: DateTimeType })
+  @Property({ type: DateTimeType, onCreate: () => new Date() })
   declare createdAt: Date;
 
-  @Property({ type: DateTimeType, onUpdate: () => new Date() })
+  @Property({ type: DateTimeType, onCreate: () => new Date(), onUpdate: () => new Date() })
   declare updatedAt: Date;
 }

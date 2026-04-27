@@ -1,20 +1,29 @@
 import { Collection, DateTimeType, StringType, TextType } from '@mikro-orm/core';
-import { Entity, ManyToMany, ManyToOne, OneToMany, Property } from '@mikro-orm/decorators/legacy';
+import {
+  Entity,
+  ManyToMany,
+  ManyToOne,
+  OneToMany,
+  Property,
+  Unique,
+} from '@mikro-orm/decorators/legacy';
 import { AccountEntity } from './account.entity';
 import { BaseEntity } from './base.entity';
 import { OperatorEntity } from './operator.entity';
 import { PermissionEntity } from './permission.entity';
 
 @Entity({ tableName: 'roles' })
+@Unique({ properties: ['account', 'name'] })
+@Unique({ properties: ['account', 'code'] })
 // Define Unique or Index key in here
 export class RoleEntity extends BaseEntity {
   @ManyToOne(() => AccountEntity)
   account!: AccountEntity;
 
-  @Property({ type: StringType, length: 255, unique: true })
+  @Property({ type: StringType, length: 255 })
   name!: string;
 
-  @Property({ type: StringType, length: 255, unique: true })
+  @Property({ type: StringType, length: 255 })
   code!: string;
 
   @Property({ type: TextType, nullable: true })
@@ -23,10 +32,10 @@ export class RoleEntity extends BaseEntity {
   @Property({ type: DateTimeType, nullable: true })
   deletedAt!: Date | null;
 
-  @Property({ type: DateTimeType })
+  @Property({ type: DateTimeType, onCreate: () => new Date() })
   declare createdAt: Date;
 
-  @Property({ type: DateTimeType, onUpdate: () => new Date() })
+  @Property({ type: DateTimeType, onCreate: () => new Date(), onUpdate: () => new Date() })
   declare updatedAt: Date;
 
   @OneToMany(() => OperatorEntity, (operator) => operator.role)
