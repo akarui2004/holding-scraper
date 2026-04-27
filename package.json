@@ -36,12 +36,12 @@
     "db:drop": "yarn script scripts/db-drop.ts",
     "db:create": "yarn orm database:create",
     "db:fresh": "yarn db:drop && yarn db:create && yarn migration:up",
+    "db:seed": "yarn orm seeder:run",
     "entity:create": "yarn script scripts/create-entity.ts",
     "migration:create": "yarn orm migration:create",
     "migration:up": "yarn orm migration:up",
     "migration:down": "yarn orm migration:down",
-    "seeder:create": "yarn orm seeder:create",
-    "seeder:run": "yarn orm seeder:run"
+    "seeder:create": "yarn orm seeder:create"
   },
   "dependencies": {
     "@fastify/deepmerge": "^3.2.1",

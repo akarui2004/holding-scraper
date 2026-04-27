@@ -1,3 +1,3 @@
-id,name,domain,status
-019d77dc-cbc3-7bad-b7f9-dd4370a66a0b,Company Review,review-company.example,active
-019d77dd-0d0c-7ba4-97c6-c6309925ad59,Holding Scrapper,holding-scrapper.example,active
+id,name,domain,status,deleted_at
+019d77dc-cbc3-7bad-b7f9-dd4370a66a0b,Company Review,review-company.example,active,null
+019d77dd-0d0c-7ba4-97c6-c6309925ad59,Holding Scrapper,holding-scrapper.example,active,null
